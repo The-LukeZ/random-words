@@ -1,6 +1,6 @@
-import assert from "assert";
-import { generate, count } from "../index.js";
-import { wordList } from "../index.js";
+const assert = require("assert");
+const { generate, count } = require("../index.js");
+const { wordList } = require("../index.js");
 
 const longestWordSize = wordList.reduce((longestWord, currentWord) =>
   currentWord.length > longestWord.length ? currentWord : longestWord
