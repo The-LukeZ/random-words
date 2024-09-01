@@ -1,5 +1,8 @@
 # random-words
 
+This fork works just like the [original](https://github.com/apostrophecms/random-words), but is a `CommonJS` package instead of a `module`.
+So it doesn't work in browsers!
+
 ## Generate one or more common English words
 
 `random-words` generates random words for use as sample text. We use it to generate random blog posts when testing [Apostrophe](http://apostrophecms.org).
@@ -12,12 +15,12 @@ The `count` function can be used to calculate the total number of words in the w
 
 Installation:
 
-    npm install random-words
+    npm install git+ssh://git@github.com:The-LukeZ/random-words
 
 Examples:
 
 ```js
-import { generate, count } from "random-words";
+const { generate, count } = require("random-words");
 
 console.log(generate());
 //output: 'army'
@@ -78,24 +81,24 @@ console.log(generate({ exactly: 5, wordsPerString: 2, separator: "-" }));
 //output: [ 'equator-variety', 'salt-usually', 'importance-becoming', 'stream-several', 'goes-fight' ]
 
 console.log(
-  generate({
-    exactly: 5,
-    wordsPerString: 2,
-    formatter: (word) => word.toUpperCase(),
-  })
+    generate({
+        exactly: 5,
+        wordsPerString: 2,
+        formatter: (word) => word.toUpperCase(),
+    })
 );
 //output: [ 'HAVING LOAD', 'LOST PINE', 'GAME SLOPE', 'SECRET GIANT', 'INDEED LOCATION' ]
 
 console.log(
-  generate({
-    exactly: 5,
-    wordsPerString: 2,
-    formatter: (word, index) => {
-      return index === 0
-        ? word.slice(0, 1).toUpperCase().concat(word.slice(1))
-        : word;
-    },
-  })
+    generate({
+        exactly: 5,
+        wordsPerString: 2,
+        formatter: (word, index) => {
+            return index === 0
+                ? word.slice(0, 1).toUpperCase().concat(word.slice(1))
+                : word;
+        },
+    })
 );
 //output: [ 'Until smoke', 'Year strength', 'Pay knew', 'Fallen must', 'Chief arrow' ]
 
@@ -103,12 +106,11 @@ console.log(count());
 //output: 1952
 
 console.log(count({ minLength: 5 }));
-//output: 1318 
+//output: 1318
 
 console.log(count({ maxLength: 7 }));
 //output: 1649
 
 console.log(count({ minLength: 5, maxLength: 7 }));
 //output: 1015
-
 ```
